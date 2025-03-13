@@ -1,46 +1,54 @@
-### Objective
+# React + TypeScript + Vite
 
-BDL Capital Management is branching into the music business and needs a new website. Build it using TypeScript and React.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Brief
+Currently, two official plugins are available:
 
-In a fictional world, BDL Capital Management is branching into the music business and we need a new a website. This website needs to display the top 100 songs based on the iTunes API. This code challenge allows you to choose your own path and lets you flaunt your creative panache and technical skills along the way.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Tasks
+## Expanding the ESLint configuration
 
-- Implement assignment using:
-  - Language: **TypeScript**
-  - Framework: **React**
-- Show top albums based on the json feed here: `https://itunes.apple.com/us/rss/topalbums/limit=100/json`
-- Cross browser support (or graceful degradation)
-- A clean modern look and responsive design
-- A good user experience
-- Use a CSS Framework (Bootstrap, Foundation, Pure, etc.…)
-- Allow the top 100 to be searchable
-- Surprise us! Add a feature that you think would work well here (for instance, advanced search, integration with other API, a "Favorite" functionality)
-- Describe the feature in separate markdown file
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Deliverables
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-Make sure to include all source code in the repository.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-### Evaluation Criteria
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- **TypeScript** best practices
-- We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program.
-- Show us your work through your commit history
-- Completeness: did you complete the features?
-- Correctness: does the functionality act in sensible, thought-out ways?
-- Maintainability: is it written in a clean, maintainable way?
-- Testing: is the system adequately tested?
-
-### CodeSubmit
-
-Create a repository to Github.com and invite this profile :
-
-- https://github.com/jbbeuzelin
-- https://github.com/ndouilletbdl
-
-Please organize, design, test and document your code as if it were going into production - then push your changes to the master branch. After you have pushed your code, you may submit the assignment on the assignment page.
-
-All the best and happy coding,
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
