@@ -19,7 +19,6 @@ export const useAlbums = () => {
       } catch (error) {
         setError("Failed to fetch albums");
         console.error("Error fetching albums:", error);
-        // TODO - Insert error handling here - display error message to user with snackbar ?
       } finally {
         setLoading(false);
       }
