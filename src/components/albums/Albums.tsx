@@ -1,14 +1,7 @@
-import {
-  Box,
-  Center,
-  Grid,
-  Input,
-  Spinner,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Center, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useAlbums } from "../../hooks/useAlbums";
 import { AlbumCard } from "./AlbumCard";
+import { SearchInput } from "./SearchInput";
 
 export const Albums = () => {
   const { albums, loading, error, searchTerm, setSearchTerm } = useAlbums();
@@ -31,14 +24,7 @@ export const Albums = () => {
 
   return (
     <Stack align="stretch" direction="column" spacing={6}>
-      <Box position="relative">
-        <Input
-          placeholder="Search albums or artists..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          size="lg"
-        />
-      </Box>
+      <SearchInput value={searchTerm} onChange={setSearchTerm} />
 
       <Grid
         templateColumns={{
