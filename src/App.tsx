@@ -1,5 +1,5 @@
 import { ChakraProvider, Container } from "@chakra-ui/react";
-import Albums from "./components/Albums";
+import { Albums } from "./components/albums/Albums";
 
 function App() {
   return (
