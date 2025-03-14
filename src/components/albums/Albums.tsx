@@ -1,4 +1,4 @@
-import { Center, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
+import { Center, Grid, Heading, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useAlbums } from "../../hooks/useAlbums";
 import { AlbumCard } from "./AlbumCard";
 import { SearchInput } from "./SearchInput";
@@ -24,6 +24,10 @@ export const Albums = () => {
 
   return (
     <Stack align="stretch" direction="column" spacing={6}>
+      <Heading size="2xl" textAlign="center" mb={4} color="blue.600">
+        BDL Music Top 100
+      </Heading>
+
       <SearchInput value={searchTerm} onChange={setSearchTerm} />
 
       <Grid

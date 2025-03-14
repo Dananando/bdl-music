@@ -35,6 +35,11 @@ export const EventModal = ({
   loading,
   error,
 }: EventModalProps) => {
+  const getLocationFromTimezone = (timezone: string) => {
+    const [, location] = timezone.split("/");
+    return location.replace(/_/g, " ");
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -61,7 +66,7 @@ export const EventModal = ({
                 {event.title || `${artistName} Concert`}
               </Text>
               <Text>Date: {format(new Date(event.starts_at), "PPpp")}</Text>
-              <Text>Timezone: {event.timezone}</Text>
+              <Text>Location: {getLocationFromTimezone(event.timezone)}</Text>
             </VStack>
           )}
 
