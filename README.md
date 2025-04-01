@@ -5,7 +5,7 @@ It uses React and Chakra-UI (library component)
 # Run the app
 
 1. Clone the repo `https://github.com/Dananando/bdl-music`
-2. Set your `.env` to have the rapid-api keys:
+2. Set your `.env` to have the rapid-api keys (it is a public key, no need to hide it):
 
 ```
 VITE_RAPID_API_KEY=28338abe07mshb74938ef82f09f7p12b4c6jsnafe4fe35b8db
